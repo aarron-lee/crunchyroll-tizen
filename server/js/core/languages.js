@@ -304,6 +304,7 @@ window.languages = {
       list: "My list",
       history: "History",
       browse: "Browse",
+      profiles: "Profiles",
       settings: "Settings",
       logout: "Logout",
     },

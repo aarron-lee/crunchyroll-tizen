@@ -13,7 +13,7 @@ window.menu = {
       icon: "fa-solid fa-house",
       action: "home.restart",
     },
-  {
+    {
       id: "mylist",
       label: "menu.list",
       icon: "fa-solid fa-bookmark",
@@ -30,6 +30,13 @@ window.menu = {
       label: "menu.browse",
       icon: "fa-regular fa-rectangle-list",
       action: "browse.init",
+    },
+    {
+      id: "profiles",
+      label: "menu.profiles",
+      icon: "fa-solid fa-user",
+      tool: true,
+      action: "profilesScreen.init",
     },
     {
       id: "settings",
