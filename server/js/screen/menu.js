@@ -96,7 +96,7 @@ window.menu = {
             session.storage.account.avatar
           }">
         </div>
-        <p>${session.storage.account.username}</p>
+        <p>${session.get_active_profile_name()}</p>
         <i class="fa-solid fa-crown"></i>
       </div>
       <div class="options">

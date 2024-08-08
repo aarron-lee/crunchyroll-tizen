@@ -138,17 +138,6 @@ window.service = {
         })
           .then((response) => response.json())
           .then((json) => {
-            session.storage.expires_in = new Date().setSeconds(
-              new Date().getSeconds() + json.expires_in
-            );
-            session.storage.id = json.account_id;
-            session.storage.profile_id = json.profile_id;
-            session.storage.country = json.country;
-            session.storage.token_type = json.token_type;
-            session.storage.access_token = json.access_token;
-            session.storage.refresh_token = json.refresh_token;
-            session.update();
-
             return request?.success(json);
           })
           .catch((error) => request?.error(error));

@@ -215,7 +215,37 @@ window.session = {
     }
   },
 
-  switch_profile: function (callback) {},
+  switch_profile: function (callback, profile_id) {
+    return service.switchProfile(
+      {
+        success: (json) => {
+          session.storage.expires_in = new Date().setSeconds(
+            new Date().getSeconds() + json.expires_in
+          );
+          session.storage.id = json.account_id;
+          session.storage.profile_id = json.profile_id;
+          session.storage.country = json.country;
+          session.storage.token_type = json.token_type;
+          session.storage.access_token = json.access_token;
+          session.storage.refresh_token = json.refresh_token;
+          session.update();
+
+          // refresh profiles to set correct is_selected status
+          service.profiles({
+            success: (response) => {
+              session.storage.profiles = response.profiles;
+              session.update();
+            },
+            error: console.error,
+          });
+
+          return callback?.success(json);
+        },
+        error: callback?.error,
+      },
+      profile_id
+    );
+  },
 
   // return session token, if expires refresh, if doesn't exist returns undefined
   valid: function (callback) {
@@ -235,6 +265,20 @@ window.session = {
   update: function () {
     localStorage.setItem("session", JSON.stringify(session.storage));
     return session.storage;
+  },
+
+  get_active_profile_name() {
+    const profiles = session.storage.profiles;
+
+    for (let i = 0; i < profiles.length; i++) {
+      const { is_selected, username, profile_name } = profiles[i];
+
+      if (is_selected) {
+        return username ? username : profile_name;
+      }
+    }
+
+    return session.storage.account.username;
   },
 
   clear: function () {

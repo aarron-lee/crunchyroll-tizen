@@ -65,7 +65,7 @@ window.profilesScreen = {
 
         var element = options[current];
 
-        service.switchProfile(
+        session.switch_profile(
           {
             success: (responseJson) => {
               const { profile_id } = responseJson;
@@ -74,15 +74,6 @@ window.profilesScreen = {
               var option = $(`#${profile_id}`);
 
               option.addClass("active");
-
-              // refresh profiles to set correct is_selected status
-              service.profiles({
-                success: (response) => {
-                  session.storage.profiles = response.profiles;
-                  session.update();
-                },
-                error: console.error,
-              });
               menu.open();
             },
             error: console.error,
