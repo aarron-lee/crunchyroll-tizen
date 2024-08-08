@@ -234,16 +234,28 @@ window.session = {
           service.profiles({
             success: (response) => {
               session.storage.profiles = response.profiles;
+
+              session.storage.profiles.forEach((profile) => {
+                if (profile.is_selected) {
+                  session.storage.account.audio =
+                    profile.preferred_content_audio_language;
+                  session.storage.account.language =
+                    profile.preferred_content_subtitle_language;
+                }
+              });
+
               session.update();
+
+              // manually update profile label
               const profileName = document.getElementById(
                 "active-profile-name"
               );
               profileName.innerHTML = session.get_active_profile_name();
+
+              return callback?.success(json);
             },
             error: console.error,
           });
-
-          return callback?.success(json);
         },
         error: callback?.error,
       },
