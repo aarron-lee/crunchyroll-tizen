@@ -36,10 +36,25 @@ window.profilesScreen = {
   },
 
   keyDown(event) {
-    console.log(event);
     switch (event.keyCode) {
       case tvKey.KEY_LEFT:
         menu.open();
+        break;
+      case tvKey.KEY_DOWN:
+        var options = $(".options li");
+        var current = options.index($(`.options li.selected`));
+        options.removeClass("selected");
+
+        var newCurrent = current < options.length - 1 ? current + 1 : current;
+        options.eq(newCurrent).addClass("selected");
+        break;
+      case tvKey.KEY_UP:
+        var options = $(`.options li`);
+        var current = options.index($(`.options li.selected`));
+        options.removeClass("selected");
+
+        var newCurrent = current > 0 ? current - 1 : current;
+        options.eq(newCurrent).addClass("selected");
         break;
     }
   },
