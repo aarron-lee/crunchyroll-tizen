@@ -82,8 +82,8 @@ window.service = {
           headers: headers,
         })
           .then((response) => response.json())
-          .then((json) => request.success(json))
-          .catch((error) => request.error(error));
+          .then((json) => request?.success(json))
+          .catch((error) => request?.error(error));
       },
     });
   },
@@ -138,8 +138,6 @@ window.service = {
         })
           .then((response) => response.json())
           .then((json) => {
-            console.log(json);
-
             session.storage.expires_in = new Date().setSeconds(
               new Date().getSeconds() + json.expires_in
             );

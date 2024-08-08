@@ -27,10 +27,12 @@ window.profilesScreen = {
     const profiles = session.storage.profiles;
 
     return profiles.map((profile, idx) => {
-      const { is_selected, profile_name } = profile;
+      const { is_selected, profile_name, profile_id } = profile;
 
-      return `<li class="${is_selected ? "selected" : ""}">
-        ${profile_name?.trim()}
+      return `<li class="${
+        is_selected ? "selected active" : ""
+      }" id="${profile_id}">
+        ${profile_name?.trim().toUpperCase()}
         </li>`;
     });
   },
@@ -55,6 +57,39 @@ window.profilesScreen = {
 
         var newCurrent = current > 0 ? current - 1 : current;
         options.eq(newCurrent).addClass("selected");
+        break;
+      case tvKey.KEY_ENTER:
+      case tvKey.KEY_PANEL_ENTER:
+        var options = $(`.options li`);
+        var current = options.index($(`.options li.selected`));
+
+        var element = options[current];
+
+        service.switchProfile(
+          {
+            success: (responseJson) => {
+              const { profile_id } = responseJson;
+              options.removeClass("active");
+
+              var option = $(`#${profile_id}`);
+
+              option.addClass("active");
+
+              // refresh profiles to set correct is_selected status
+              service.profiles({
+                success: (response) => {
+                  session.storage.profiles = response.profiles;
+                  session.update();
+                },
+                error: console.error,
+              });
+              menu.open();
+            },
+            error: console.error,
+          },
+          element.id
+        );
+
         break;
     }
   },
