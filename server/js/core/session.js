@@ -235,6 +235,10 @@ window.session = {
             success: (response) => {
               session.storage.profiles = response.profiles;
               session.update();
+              const profileName = document.getElementById(
+                "active-profile-name"
+              );
+              profileName.innerHTML = session.get_active_profile_name();
             },
             error: console.error,
           });
