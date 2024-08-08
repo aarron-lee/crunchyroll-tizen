@@ -1,10 +1,10 @@
-# Linux port of "Crunchyroll for TIZEN"
+# Crunchyroll for Linux
 
 ![layouts.gif](https://raw.githubusercontent.com/aarron-lee/crunchyroll-tizen/master/layouts.gif)
 
 ## Description:
 
-This is a Linux port of the Unofficial Tizen Crunchyroll App.
+This is a Linux port of the [Unofficial Tizen Crunchyroll App](https://github.com/jhassan8/crunchyroll-tizen).
 
 **INFO: Application is incomplete, some features are missing that will be added later.**
 
@@ -25,7 +25,7 @@ This is a Linux port of the Unofficial Tizen Crunchyroll App.
 - [x] Browse elements by categories
 - [x] My list screen and workflow
 
-### TODO Features
+### Todo Features
 
 - [] Game Controller support - steam deck workaround is to use a steam input community controller profile
 - [] External Keyboard support for inputting username/password
