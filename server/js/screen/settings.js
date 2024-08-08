@@ -338,11 +338,14 @@ window.settings = {
         return `
         <div style="color: #fff;font-size: 23px;line-height: 51px;text-align: right;padding: 38px 0;position: absolute;right: 0;bottom: 0;">
           <div>Crunchyroll unofficial app.</div>
-          <div>Ported to Linux, found at: https://github.com/aarron-lee/crunchyroll-linux</div>
+          <div>Ported to Linux by aarron-lee</div>
+          <div>Github: https://github.com/aarron-lee/crunchyroll-linux</div>
 
-          <div>Original app by:</div>
+          <div>App Icon from Enamo Studios:</div>
+          <div>https://www.flaticon.com/free-icons/crunchyroll</div>
+
+          <div>Original app from:</div>
           <div>Github: https://github.com/jhassan8/crunchyroll-tizen</div>
-          <div>Contact: Github or jhassan8@outlook.com</div>
           <div>Version: ${session.storage.version}</div>
         </div>`;
       },

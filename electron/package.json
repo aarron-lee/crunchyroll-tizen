@@ -16,12 +16,14 @@
     "files": [
       "index.js",
       "package.json",
-      "static/**/*"
+      "static/**/*",
+      "img/**/*"
     ],
     "linux": {
       "target": [
         "AppImage"
       ],
+      "icon": "img/icon/crunchyroll.png",
       "artifactName": "${productName}_v${version}_linux.${ext}",
       "category": "Utility"
     }
