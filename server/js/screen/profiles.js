@@ -5,7 +5,7 @@
 
 window.profilesScreen = {
   id: "profiles-screen",
-  init: async function () {
+  init: function () {
     var profiles_element = document.createElement("div");
 
     profiles_element.id = profilesScreen.id;
@@ -23,22 +23,24 @@ window.profilesScreen = {
   destroy() {
     document.body.removeChild(document.getElementById(profilesScreen.id));
   },
-  getOptions: async function () {
-    // const headers = new Headers();
-    // headers.append("Authorization", `Bearer ${storage.access_token}`);
-    // headers.append("Content-Type", "application/x-www-form-urlencoded");
+  getOptions: function () {
+    const profiles = session.storage.profiles;
 
-    // const result = await fetch(
-    //   `${service.api.url}`,
-    //   { headers }
-    // );
+    return profiles.map((profile, idx) => {
+      const { is_selected, profile_name } = profile;
 
-    // if (result.ok) {
-    //   const profiles = await result.json();
+      return `<li class="${is_selected ? "selected" : ""}">
+        ${profile_name}
+        </li>`;
+    });
+  },
 
-    //   console.log(profiles);
-    // }
-
-    return "";
+  keyDown(event) {
+    console.log(event);
+    switch (event.keyCode) {
+      case tvKey.KEY_LEFT:
+        menu.open();
+        break;
+    }
   },
 };

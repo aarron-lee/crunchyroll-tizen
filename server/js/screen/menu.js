@@ -32,7 +32,7 @@ window.menu = {
       action: "browse.init",
     },
     {
-      id: "profiles",
+      id: "profilesScreen",
       label: "menu.profiles",
       icon: "fa-solid fa-user",
       tool: true,
