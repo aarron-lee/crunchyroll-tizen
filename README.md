@@ -29,6 +29,8 @@ This is a Linux port of the [Unofficial Tizen Crunchyroll App](https://github.co
 
 - [] Game Controller support - steam deck workaround is to use a steam input community controller profile
 - [] External Keyboard support for inputting username/password
+- [] Standard keyboard controls, such as spacebar for pause/play
+- [] Fix Exit app functionality
 
 # Installation
 
