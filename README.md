@@ -36,6 +36,12 @@ Download the latest AppImage from [releases](https://github.com/aarron-lee/crunc
 
 Install it with an AppImage manager, my recommendation would be [GearLever](https://flathub.org/apps/it.mijorus.gearlever), but other alternatives like AppImageLauncher also works
 
+## Steam Deck Installation
+
+Follow the regular install instructions, but afterwards also add it to Steam as a non-Steam game.
+
+Then, in game mode, make sure to enable the Crunchyroll steam input community controller layout. It might require you to show all available layouts while selecting the layout.
+
 # Development
 
 node and npm are required dependencies.
