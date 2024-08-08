@@ -189,7 +189,7 @@ window.settings = {
             break;
           case "videoquality":
             var options = settings.qualities;
-            var active = session.storage.quality || 'auto';
+            var active = session.storage.quality || "auto";
             break;
           case "mature":
             var options = settings.bool;
@@ -338,6 +338,9 @@ window.settings = {
         return `
         <div style="color: #fff;font-size: 23px;line-height: 51px;text-align: right;padding: 38px 0;position: absolute;right: 0;bottom: 0;">
           <div>Crunchyroll unofficial app.</div>
+          <div>Ported to Linux, found at: https://github.com/aarron-lee/crunchyroll-linux</div>
+
+          <div>Original app by:</div>
           <div>Github: https://github.com/jhassan8/crunchyroll-tizen</div>
           <div>Contact: Github or jhassan8@outlook.com</div>
           <div>Version: ${session.storage.version}</div>

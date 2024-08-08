@@ -71,6 +71,23 @@ window.service = {
     });
   },
 
+  profiles: function (request) {
+    return session.refresh({
+      success: function (storage) {
+        var headers = new Headers();
+        headers.append("Authorization", `Bearer ${storage.access_token}`);
+        headers.append("Content-Type", "application/x-www-form-urlencoded");
+
+        fetch(`${service.api.url}/accounts/v1/me/multiprofile`, {
+          headers: headers,
+        })
+          .then((response) => response.json())
+          .then((json) => request.success(json))
+          .catch((error) => request.error(error));
+      },
+    });
+  },
+
   setProfile: function (request) {
     return session.refresh({
       success: function (storage) {
@@ -86,6 +103,57 @@ window.service = {
           .then((response) => null)
           .then((json) => request.success(json))
           .catch((error) => request.error(error));
+      },
+    });
+  },
+
+  //   {
+  //     "access_token": "",
+  //     "refresh_token": "uuid",
+  //     "expires_in": 300,
+  //     "token_type": "Bearer",
+  //     "scope": "account content mp:limited offline_access reviews talkbox",
+  //     "country": "US",
+  //     "account_id": "uuid",
+  //     "profile_id": "uuid"
+  //   }
+  switchProfile: function (request, profile_id) {
+    return session.refresh({
+      success: function (storage) {
+        var headers = new Headers();
+        headers.append("Authorization", service.api.auth);
+        headers.append("Content-Type", "application/x-www-form-urlencoded");
+
+        const params = service.format({
+          refresh_token: storage.refresh_token,
+          grant_type: "refresh_token_profile_id",
+          profile_id,
+          scope: "offline_access",
+        });
+
+        fetch(`${service.api.url}/auth/v1/token`, {
+          method: "POST",
+          headers: headers,
+          body: params,
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            console.log(json);
+
+            session.storage.expires_in = new Date().setSeconds(
+              new Date().getSeconds() + json.expires_in
+            );
+            session.storage.id = json.account_id;
+            session.storage.profile_id = json.profile_id;
+            session.storage.country = json.country;
+            session.storage.token_type = json.token_type;
+            session.storage.access_token = json.access_token;
+            session.storage.refresh_token = json.refresh_token;
+            session.update();
+
+            return request?.success(json);
+          })
+          .catch((error) => request?.error(error));
       },
     });
   },
@@ -217,12 +285,9 @@ window.service = {
         var headers = new Headers();
         headers.append("Authorization", `Bearer ${storage.access_token}`);
         headers.append("Content-Type", "application/x-www-form-urlencoded");
-        fetch(
-          `${service.api.drm}/v1/${request.data.id}/web/firefox/play`,
-          {
-            headers: headers,
-          }
-        )
+        fetch(`${service.api.drm}/v1/${request.data.id}/web/firefox/play`, {
+          headers: headers,
+        })
           .then((response) => response.json())
           .then((json) => request.success(json))
           .catch((error) => request.error(error));

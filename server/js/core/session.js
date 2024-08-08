@@ -15,6 +15,7 @@ window.session = {
       language: NaN,
       audio: NaN,
     },
+    profiles: [],
     cookies: {
       bucket: NaN,
       policy: NaN,
@@ -22,6 +23,7 @@ window.session = {
       key_pair_id: NaN,
       expires: NaN,
     },
+    profile_id: NaN,
     id: NaN,
     country: NaN,
     token_type: NaN,
@@ -157,6 +159,8 @@ window.session = {
         session.storage.account.mature = response.maturity_rating;
         session.storage.account.username = response.username;
         session.update();
+        // load additional profiles
+        session.load_profiles();
         callback.success();
       },
       error: callback.error,
@@ -167,6 +171,51 @@ window.session = {
       error: function (error) {},
     });
   },
+
+  load_profiles: function (callback) {
+    /* example profiles arr
+    [
+      {
+        "profile_id": "uuid",
+        "email": "email",
+        "username": "userA",
+        "profile_name": "profileA",
+        "can_switch": true,
+        "is_primary": true,
+        "is_selected": true,
+        "avatar": "png",
+        "maturity_rating": "M3",
+        "extended_maturity_rating": {
+            "BR": "16",
+            "UN": "16"
+        },
+        "preferred_communication_language": "en-US",
+        "preferred_content_audio_language": "en-US",
+        "preferred_content_subtitle_language": "en-US"
+      }
+    ]
+      */
+    try {
+      service.profiles({
+        success: function (response) {
+          session.storage.profiles = response.profiles;
+
+          session.update();
+          callback?.success();
+        },
+        error: callback?.error,
+      });
+
+      session.cookies({
+        success: function (response) {},
+        error: function (error) {},
+      });
+    } catch (e) {
+      console.error("load_profiles", e);
+    }
+  },
+
+  switch_profile: function (callback) {},
 
   // return session token, if expires refresh, if doesn't exist returns undefined
   valid: function (callback) {
@@ -201,6 +250,7 @@ window.session = {
         language: "en-US",
         audio: "",
       },
+      profiles: [],
       cookies: {
         bucket: NaN,
         policy: NaN,
@@ -208,6 +258,7 @@ window.session = {
         key_pair_id: NaN,
         expires: NaN,
       },
+      profile_id: NaN,
       id: NaN,
       country: NaN,
       token_type: NaN,
