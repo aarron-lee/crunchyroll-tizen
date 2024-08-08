@@ -30,7 +30,7 @@ window.profilesScreen = {
       const { is_selected, profile_name } = profile;
 
       return `<li class="${is_selected ? "selected" : ""}">
-        ${profile_name}
+        ${profile_name?.trim()}
         </li>`;
     });
   },
