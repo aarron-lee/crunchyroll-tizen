@@ -10,6 +10,7 @@ This is a Linux port of the Unofficial Tizen Crunchyroll App.
 
 - [x] Auth workflow
 - [x] Home screen
+- [x] Profiles
 - [x] Details screen
 - [x] Episodes screen
 - [x] Video player
@@ -24,7 +25,6 @@ This is a Linux port of the Unofficial Tizen Crunchyroll App.
 
 ### TODO Features
 
-- [] Profiles
 - [] Game Controller support
 - [] External Keyboard support for inputting username/password
 
