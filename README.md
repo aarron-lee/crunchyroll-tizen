@@ -1,5 +1,7 @@
 # Linux port of "Crunchyroll for TIZEN"
 
+![layouts.gif](https://raw.githubusercontent.com/aarron-lee/crunchyroll-tizen/master/layouts.gif)
+
 ## Description:
 
 This is a Linux port of the Unofficial Tizen Crunchyroll App.
@@ -28,11 +30,13 @@ This is a Linux port of the Unofficial Tizen Crunchyroll App.
 - [] Game Controller support
 - [] External Keyboard support for inputting username/password
 
-## Captures:
+# Installation
 
-![layouts.gif](https://raw.githubusercontent.com/jhassan8/crunchyroll-tizen/master/layouts.gif)
+Download the latest AppImage from [releases](https://github.com/aarron-lee/crunchyroll-linux/releases)
 
-## Development
+Install it with an AppImage manager, my recommendation would be [GearLever](https://flathub.org/apps/it.mijorus.gearlever), but other alternatives like AppImageLauncher also works
+
+# Development
 
 node and npm are required dependencies.
 
