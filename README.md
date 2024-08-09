@@ -31,6 +31,7 @@ This is a Linux port of the [Unofficial Tizen Crunchyroll App](https://github.co
 - [] External Keyboard support for inputting username/password
 - [] Standard keyboard controls, such as spacebar for pause/play
 - [] Fix Exit app functionality
+- [] (optional) touchscreen support
 
 # Installation
 
@@ -43,6 +44,8 @@ Install it with an AppImage manager, my recommendation would be [GearLever](http
 Follow the regular install instructions, but afterwards also add it to Steam as a non-Steam game.
 
 Then, in game mode, make sure to enable the Crunchyroll steam input community controller layout. It might require you to show all available layouts while selecting the layout.
+
+Also, in the Steam Game settings for the Crunchyroll app, set the resolution as 1080p. The App was not designed for higher resolutions, you may see visual bugs at higher than 1080p resolutions.
 
 # Development
 
