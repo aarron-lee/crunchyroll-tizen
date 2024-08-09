@@ -2,13 +2,22 @@
 
 ![layouts.gif](https://raw.githubusercontent.com/aarron-lee/crunchyroll-tizen/master/layouts.gif)
 
-## Description:
+# Table of Contents
+
+- [Description](#description)
+- [Features](#features)
+- [Installation](#install)
+- [Steam Deck / Bazzite / ChimeraOS Install](#steam-deck--bazzite--chimeraos-installation)
+- [Development](#development)
+- [Attribution](#attribution)
+
+# Description:
 
 This is a Linux port of the [Unofficial Tizen Crunchyroll App](https://github.com/jhassan8/crunchyroll-tizen).
 
 **INFO: Application is incomplete, some features are missing that will be added later.**
 
-#### Current Features
+# Features
 
 - [x] Auth workflow
 - [x] Home screen
@@ -33,13 +42,13 @@ This is a Linux port of the [Unofficial Tizen Crunchyroll App](https://github.co
 - [] Fix Exit app functionality
 - [] (optional) touchscreen support
 
-# Installation
+# Install
 
 Download the latest AppImage from [releases](https://github.com/aarron-lee/crunchyroll-linux/releases)
 
 Install it with an AppImage manager, my recommendation would be [GearLever](https://flathub.org/apps/it.mijorus.gearlever), but other alternatives like AppImageLauncher also works
 
-## Steam Deck Installation
+# Steam Deck / Bazzite / ChimeraOS Installation
 
 Follow the regular install instructions, but afterwards also add it to Steam as a non-Steam game.
 
@@ -47,7 +56,7 @@ Then, in game mode, make sure to enable the Crunchyroll steam input community co
 
 I've tested the `Streaming Controls` Steam input community layout by Bleiodes, which works fairly well.
 
-Also, in the Steam Game settings for the Crunchyroll app, set the resolution as 1080p. The App was not designed for higher resolutions, you may see visual bugs at higher than 1080p resolutions.
+Also, in the Steam Game settings for the app, set the resolution as 1080p. The App was not designed for higher resolutions, you may see visual bugs at higher than 1080p resolutions.
 
 # Development
 
