@@ -45,6 +45,8 @@ Follow the regular install instructions, but afterwards also add it to Steam as 
 
 Then, in game mode, make sure to enable the Crunchyroll steam input community controller layout. It might require you to show all available layouts while selecting the layout.
 
+I've tested the `Streaming Controls` Steam input community layout by Bleiodes, which works fairly well.
+
 Also, in the Steam Game settings for the Crunchyroll app, set the resolution as 1080p. The App was not designed for higher resolutions, you may see visual bugs at higher than 1080p resolutions.
 
 # Development
